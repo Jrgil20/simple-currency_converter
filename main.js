@@ -1,8 +1,8 @@
 // currency-converter.ts
 var exchangeRates = {
-    USD: 1, // US Dollar (base currency)
-    EUR: 0.85, // Euro
-    GBP: 0.73, // British Pound
+    USD: 1,
+    EUR: 0.85,
+    GBP: 0.73,
     JPY: 145.25, // Japanese Yen
     // Add more currencies and rates as needed
 };
@@ -17,12 +17,12 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
     return convertedAmount;
 }
 // Example usage
-var amountToConvert = 100;
-var fromCurrency = 'USD';
-var toCurrency = 'EUR';
+var amountToConvert = parseFloat(document.getElementById('amount').value);
+var fromCurrency = document.getElementById('fromCurrency').value;
+var toCurrency = document.getElementById('toCurrency').value;
 try {
     var convertedAmount = convertCurrency(amountToConvert, fromCurrency, toCurrency);
-    console.log("".concat(amountToConvert, " ").concat(fromCurrency, " is equal to ").concat(convertedAmount.toFixed(2), " ").concat(toCurrency));
+    document.getElementById('result').innerText = "".concat(amountToConvert, " ").concat(fromCurrency, " is equal to ").concat(convertedAmount.toFixed(2), " ").concat(toCurrency);
 }
 catch (error) {
     console.error(error.message);

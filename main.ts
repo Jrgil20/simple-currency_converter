@@ -27,13 +27,14 @@ interface CurrencyRates {
   }
   
   // Example usage
-  const amountToConvert = 100;
-  const fromCurrency = 'USD';
-  const toCurrency = 'EUR';
+  const amountToConvert = parseFloat((document.getElementById('amount') as HTMLInputElement).value);
+  const fromCurrency = (document.getElementById('fromCurrency') as HTMLSelectElement).value
+  const toCurrency = (document.getElementById('toCurrency') as HTMLSelectElement).value
   
   try {
     const convertedAmount = convertCurrency(amountToConvert, fromCurrency, toCurrency);
-    console.log(`${amountToConvert} ${fromCurrency} is equal to ${convertedAmount.toFixed(2)} ${toCurrency}`);
+    (document.getElementById('result') as HTMLDivElement).innerText = `${amountToConvert} ${fromCurrency} is equal to ${convertedAmount.toFixed(2)} ${toCurrency}`;
+
   } catch (error: any) { 
     console.error(error.message);
   }
