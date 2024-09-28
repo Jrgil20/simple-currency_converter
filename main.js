@@ -16,14 +16,18 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
     var convertedAmount = amountInUSD * exchangeRates[toCurrency];
     return convertedAmount;
 }
-// Example usage
-var amountToConvert = parseFloat(document.getElementById('amount').value);
-var fromCurrency = document.getElementById('fromCurrency').value;
-var toCurrency = document.getElementById('toCurrency').value;
-try {
-    var convertedAmount = convertCurrency(amountToConvert, fromCurrency, toCurrency);
-    document.getElementById('result').innerText = "".concat(amountToConvert, " ").concat(fromCurrency, " is equal to ").concat(convertedAmount.toFixed(2), " ").concat(toCurrency);
+function convert() {
+    var amountToConvert = parseFloat(document.getElementById('amount').value);
+    var fromCurrency = document.getElementById('fromCurrency').value;
+    var toCurrency = document.getElementById('toCurrency').value;
+    try {
+        var convertedAmount = convertCurrency(amountToConvert, fromCurrency, toCurrency);
+        document.getElementById('result').innerText = "".concat(amountToConvert, " ").concat(fromCurrency, " is equal to ").concat(convertedAmount.toFixed(2), " ").concat(toCurrency);
+    }
+    catch (error) {
+        console.error(error.message);
+    }
 }
-catch (error) {
-    console.error(error.message);
-}
+// Agrega un event listener al botón "Convert"
+var convertButton = document.getElementById('convertButton');
+convertButton === null || convertButton === void 0 ? void 0 : convertButton.addEventListener('click', convert);
